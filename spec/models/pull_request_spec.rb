@@ -6,7 +6,6 @@ RSpec.describe PullRequest, type: :model do
   subject { @pull_request }
 
   it { should respond_to(:commits) }
-
   it "#commits returns an AR relation" do
     expect(@pull_request.commits).to be_a_kind_of(ActiveRecord::Relation)
   end

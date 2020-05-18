@@ -5,4 +5,5 @@ class Repository < ApplicationRecord
   has_many :commits
   has_many :pull_requests
   has_many :releases
+
 end
