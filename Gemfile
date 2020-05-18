@@ -26,11 +26,17 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # gem 'rack-cors'
 
 group :development, :test do
-  gem 'debbie'
+  gem 'pry'
+  gem 'pry-rails'
+  gem 'pry-rescue'
+  gem 'pry-byebug'
 
   # Using Rspec testing framework
   gem 'rspec-rails'
   gem 'rspec_api_documentation'
+
+  # Handling env variables
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -47,4 +53,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # API documentation gem
-gem 'apitome'
+gem 'raddocs'
