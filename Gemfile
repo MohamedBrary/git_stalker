@@ -62,3 +62,6 @@ gem 'raddocs'
 
 # Handling command/service pattern
 gem 'mutations'
+
+# Easily send HTTP requests
+gem 'httparty'

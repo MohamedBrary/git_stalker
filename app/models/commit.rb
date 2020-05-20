@@ -33,18 +33,20 @@ class Commit < ApplicationRecord
   # Callbacks
 
   before_save :set_ticket_ids
+  after_save :push_updates
 
   def set_ticket_ids
     self.ticket_ids = extract_ticket_ids if message_changed?
   end
 
-  validates :state, inclusion: { in: STATES }
-  # TODO rest of validations
+  def push_updates
+    PushUpdate::Commit.run(commit: self) if saved_change_to_state?
+  end
 
   # -------
   # Helpers
 
-  # message: ... Ref: #sp-421, #eve-421
+  # message format: ... Ref: #sp-421, #eve-421
   def extract_ticket_ids
     tickets = message.split('Ref: ').last
     tickets.gsub('#', '').split(',').map(&:strip)
