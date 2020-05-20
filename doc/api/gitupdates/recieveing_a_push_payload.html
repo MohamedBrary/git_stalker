@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GitUpdates API</title>
+    <meta charset="utf-8">
+    <style>
+
+body {
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+  color: #404040;
+}
+
+.description {
+  white-space: pre;
+}
+
+.container {
+  width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  zoom: 1;
+}
+
+pre {
+  background-color: #f5f5f5;
+  display: block;
+  padding: 8.5px;
+  margin: 0 0 18px;
+  line-height: 18px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+td.required .name:after {
+  float: right;
+  content: "required";
+  font-weight: normal;
+  color: #F08080;
+}
+
+a{
+  color: #0069d6;
+  text-decoration: none;
+  line-height: inherit;
+  font-weight: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  color: #404040;
+}
+
+h1 {
+  margin-bottom: 18px;
+  font-size: 30px;
+  line-height: 36px;
+}
+h2 {
+  font-size: 24px;
+  line-height: 36px;
+}
+h3{
+  font-size: 18px;
+  line-height: 36px;
+}
+h4 {
+  font-size: 16px;
+  line-height: 36px;
+}
+
+table{
+  width: 100%;
+  margin-bottom: 18px;
+  padding: 0;
+  border-collapse: separate;
+  font-size: 13px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+}
+
+table th {
+  padding-top: 9px;
+  font-weight: bold;
+  vertical-align: middle;
+  border-bottom: 1px solid #ddd;
+}
+table th+th, table td+td {
+  border-left: 1px solid #ddd;
+}
+table th, table td {
+  padding: 10px 10px 9px;
+  line-height: 18px;
+  text-align: left;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>GitUpdates API</h1>
+
+        <p class="explanation">GitUpdate resource</p>
+
+      <div class="article">
+        <h2>Recieveing a push payload</h2>
+        <h3>POST /git_updates</h3>
+
+          <h3>Parameters</h3>
+          <table class="parameters table table-striped table-bordered table-condensed">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="required">
+                    <span class="name">commits</span>
+                </td>
+                <td>
+                  <span class="description">Commits, as a Array, for example: [
+  {
+    &quot;sha&quot;: &quot;f66997d4630d353901a64f39df5f92d22e4bc634&quot;,
+    &quot;message&quot;: &quot;FEAT: Support Android 8.1 devices \n\nRef: #sp-131&quot;,
+    &quot;date&quot;: &quot;2018-05-14T16:00:49Z&quot;,
+    &quot;author&quot;: {
+      &quot;id&quot;: 21431007,
+      &quot;name&quot;: &quot;ahmed&quot;,
+      &quot;email&quot;: &quot;ahmed@suitepad.de&quot;
+    }
+  },
+  {
+    &quot;sha&quot;: &quot;fbea31d5a04cd9e238fd45f3f27f314ebf707479&quot;,
+    &quot;message&quot;: &quot;FIX: hide url not being passed to PDF URL\n\nRef: #sp-124&quot;,
+    &quot;date&quot;: &quot;2018-05-27T16:00:49Z&quot;,
+    &quot;author&quot;: {
+      &quot;id&quot;: 21431007,
+      &quot;name&quot;: &quot;ahmed&quot;,
+      &quot;email&quot;: &quot;ahmed@suitepad.de&quot;
+    }
+  }
+]</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="required">
+                    <span class="name">repository</span>
+                </td>
+                <td>
+                  <span class="description">Repository, as a Hash, for example: {
+  &quot;id&quot;: 1354927974,
+  &quot;name&quot;: &quot;suite_apk&quot;
+}</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="required">
+                    <span class="name">pushed_at</span>
+                </td>
+                <td>
+                  <span class="description">Pushed At, as a String, for example: &quot;2018-05-29T20:18:44Z&quot;</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="required">
+                    <span class="name">pusher</span>
+                </td>
+                <td>
+                  <span class="description">Pusher, as a Hash, for example: {
+  &quot;id&quot;: 21431007,
+  &quot;name&quot;: &quot;ahmed&quot;,
+  &quot;email&quot;: &quot;ahmed@suitepad.de&quot;
+}</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <h3>Request</h3>
+
+            <h4>Headers</h4>
+            <pre class="request headers">Host: example.org
+Content-Type: application/x-www-form-urlencoded
+Cookie: </pre>
+
+          <h4>Route</h4>
+          <pre class="request route highlight">POST /git_updates</pre>
+
+
+            <h4>Body</h4>
+            <pre class="request body">commits[][sha]=f66997d4630d353901a64f39df5f92d22e4bc634&commits[][message]=FEAT%3A+Support+Android+8.1+devices+%0A%0ARef%3A+%23sp-131&commits[][date]=2018-05-14T16%3A00%3A49Z&commits[][author][id]=21431007&commits[][author][name]=ahmed&commits[][author][email]=ahmed%40suitepad.de&commits[][sha]=fbea31d5a04cd9e238fd45f3f27f314ebf707479&commits[][message]=FIX%3A+hide+url+not+being+passed+to+PDF+URL%0A%0ARef%3A+%23sp-124&commits[][date]=2018-05-27T16%3A00%3A49Z&commits[][author][id]=21431007&commits[][author][name]=ahmed&commits[][author][email]=ahmed%40suitepad.de&repository[id]=1354927974&repository[name]=suite_apk&pushed_at=2018-05-29T20%3A18%3A44Z&pusher[id]=21431007&pusher[name]=ahmed&pusher[email]=ahmed%40suitepad.de</pre>
+
+
+            <h3>Response</h3>
+              <h4>Headers</h4>
+              <pre class="response headers">X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+X-Download-Options: noopen
+X-Permitted-Cross-Domain-Policies: none
+Referrer-Policy: strict-origin-when-cross-origin
+Content-Type: application/json; charset=utf-8
+ETag: W/&quot;458ab6cabb5e1a56b5770f8f17a7aa95&quot;
+Cache-Control: max-age=0, private, must-revalidate
+X-Request-Id: 2202c842-a5d0-467c-877b-935db558ec97
+X-Runtime: 0.026350
+Content-Length: 829</pre>
+            <h4>Status</h4>
+            <pre class="response status">200 OK</pre>
+              <h4>Body</h4>
+              <pre class="response body">{
+  &quot;id&quot;: 4,
+  &quot;user_id&quot;: 5,
+  &quot;repository_id&quot;: 3,
+  &quot;event&quot;: &quot;push&quot;,
+  &quot;external_source&quot;: &quot;Future Feature&quot;,
+  &quot;payload&quot;: {
+    &quot;commits&quot;: [
+      {
+        &quot;sha&quot;: &quot;f66997d4630d353901a64f39df5f92d22e4bc634&quot;,
+        &quot;message&quot;: &quot;FEAT: Support Android 8.1 devices \n\nRef: #sp-131&quot;,
+        &quot;date&quot;: &quot;2018-05-14T16:00:49Z&quot;,
+        &quot;author&quot;: {
+          &quot;id&quot;: &quot;21431007&quot;,
+          &quot;name&quot;: &quot;ahmed&quot;,
+          &quot;email&quot;: &quot;ahmed@suitepad.de&quot;
+        }
+      },
+      {
+        &quot;sha&quot;: &quot;fbea31d5a04cd9e238fd45f3f27f314ebf707479&quot;,
+        &quot;message&quot;: &quot;FIX: hide url not being passed to PDF URL\n\nRef: #sp-124&quot;,
+        &quot;date&quot;: &quot;2018-05-27T16:00:49Z&quot;,
+        &quot;author&quot;: {
+          &quot;id&quot;: &quot;21431007&quot;,
+          &quot;name&quot;: &quot;ahmed&quot;,
+          &quot;email&quot;: &quot;ahmed@suitepad.de&quot;
+        }
+      }
+    ],
+    &quot;repository&quot;: {
+      &quot;id&quot;: &quot;1354927974&quot;,
+      &quot;name&quot;: &quot;suite_apk&quot;
+    },
+    &quot;pushed_at&quot;: &quot;2018-05-29T20:18:44Z&quot;,
+    &quot;pusher&quot;: {
+      &quot;id&quot;: &quot;21431007&quot;,
+      &quot;name&quot;: &quot;ahmed&quot;,
+      &quot;email&quot;: &quot;ahmed@suitepad.de&quot;
+    },
+    &quot;controller&quot;: &quot;git_updates&quot;,
+    &quot;action&quot;: &quot;create&quot;
+  },
+  &quot;created_at&quot;: &quot;2020-05-20T20:38:51.845Z&quot;,
+  &quot;updated_at&quot;: &quot;2020-05-20T20:38:51.845Z&quot;
+}</pre>
+      </div>
+    </div>
+  </body>
+</html>

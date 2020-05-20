@@ -12,9 +12,9 @@ class Commit < ApplicationRecord
 
   belongs_to :git_update
   belongs_to :repository
-  belongs_to :release
+  belongs_to :release, optional: true
   belongs_to :committer, class_name: 'User'
-  belongs_to :pusher, class_name: 'User'
+  belongs_to :pusher, class_name: 'User', optional: true
 
   # ------
   # Scopes
@@ -29,8 +29,26 @@ class Commit < ApplicationRecord
   validates :state, inclusion: { in: STATES }
   # TODO rest of validations
 
+  # ---------
+  # Callbacks
+
+  before_save :set_ticket_ids
+
+  def set_ticket_ids
+    self.ticket_ids = extract_ticket_ids if message_changed?
+  end
+
+  validates :state, inclusion: { in: STATES }
+  # TODO rest of validations
+
   # -------
   # Helpers
+
+  # message: ... Ref: #sp-421, #eve-421
+  def extract_ticket_ids
+    tickets = message.split('Ref: ').last
+    tickets.gsub('#', '').split(',').map(&:strip)
+  end
 
   def pushed?
     state == STATE_PUSHED

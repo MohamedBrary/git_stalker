@@ -2,12 +2,13 @@ class GitUpdatesController < ApplicationController
 
   # POST /git_updates
   def create
-    @git_update = GitUpdate.new(git_update_params)
+    outcome = Upsert::GitUpdate.run(git_update_params)
 
-    if @git_update.save
-      render json: @git_update, status: :created, location: @git_update
+    if outcome.success?
+      @git_update = outcome.result
+      render json: @git_update, status: :ok
     else
-      render json: @git_update.errors, status: :unprocessable_entity
+      render json: outcome.errors, status: :unprocessable_entity
     end
   end
 

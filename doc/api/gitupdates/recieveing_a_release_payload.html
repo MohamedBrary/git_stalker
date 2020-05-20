@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GitUpdates API</title>
+    <meta charset="utf-8">
+    <style>
+
+body {
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+  color: #404040;
+}
+
+.description {
+  white-space: pre;
+}
+
+.container {
+  width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  zoom: 1;
+}
+
+pre {
+  background-color: #f5f5f5;
+  display: block;
+  padding: 8.5px;
+  margin: 0 0 18px;
+  line-height: 18px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+td.required .name:after {
+  float: right;
+  content: "required";
+  font-weight: normal;
+  color: #F08080;
+}
+
+a{
+  color: #0069d6;
+  text-decoration: none;
+  line-height: inherit;
+  font-weight: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  color: #404040;
+}
+
+h1 {
+  margin-bottom: 18px;
+  font-size: 30px;
+  line-height: 36px;
+}
+h2 {
+  font-size: 24px;
+  line-height: 36px;
+}
+h3{
+  font-size: 18px;
+  line-height: 36px;
+}
+h4 {
+  font-size: 16px;
+  line-height: 36px;
+}
+
+table{
+  width: 100%;
+  margin-bottom: 18px;
+  padding: 0;
+  border-collapse: separate;
+  font-size: 13px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+}
+
+table th {
+  padding-top: 9px;
+  font-weight: bold;
+  vertical-align: middle;
+  border-bottom: 1px solid #ddd;
+}
+table th+th, table td+td {
+  border-left: 1px solid #ddd;
+}
+table th, table td {
+  padding: 10px 10px 9px;
+  line-height: 18px;
+  text-align: left;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>GitUpdates API</h1>
+
+        <p class="explanation">GitUpdate resource</p>
+
+      <div class="article">
+        <h2>Recieveing a release payload</h2>
+        <h3>POST /git_updates</h3>
+
+          <h3>Parameters</h3>
+          <table class="parameters table table-striped table-bordered table-condensed">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="required">
+                    <span class="name">action</span>
+                </td>
+                <td>
+                  <span class="description">Action, as a String, for example: &quot;released&quot;</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="required">
+                    <span class="name">released_at</span>
+                </td>
+                <td>
+                  <span class="description">Released At, as a String, for example: &quot;2018-05-30T20:18:44Z&quot;</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="required">
+                    <span class="name">release</span>
+                </td>
+                <td>
+                  <span class="description">Release, as a Hash, for example: {
+  &quot;id&quot;: 11248810,
+  &quot;tag_name&quot;: &quot;1.0.1&quot;,
+  &quot;author&quot;: {
+    &quot;id&quot;: 21031067,
+    &quot;name&quot;: &quot;paul&quot;,
+    &quot;email&quot;: &quot;paul@suitepad.de&quot;
+  },
+  &quot;commits&quot;: [
+    {
+      &quot;sha&quot;: &quot;78c4ef902de35c95a6b403c3f5c2e536cfbaab2e&quot;,
+      &quot;message&quot;: &quot;CHORE: Cleaner logging output\n\nRef: #happ-1224&quot;,
+      &quot;date&quot;: &quot;2018-05-24T16:00:49Z&quot;,
+      &quot;author&quot;: {
+        &quot;id&quot;: 21031067,
+        &quot;name&quot;: &quot;paul&quot;,
+        &quot;email&quot;: &quot;paul@suitepad.de&quot;
+      }
+    },
+    {
+      &quot;sha&quot;: &quot;37a8312ef07a9e729099a1eb8471dc37efa5ff56&quot;,
+      &quot;message&quot;: &quot;FIX: don&#39;t attempt invalid email notifications\n\nRef: #cro-12&quot;,
+      &quot;date&quot;: &quot;2018-05-21T09:50:49Z&quot;,
+      &quot;author&quot;: {
+        &quot;id&quot;: 21001067,
+        &quot;name&quot;: &quot;mario&quot;,
+        &quot;email&quot;: &quot;mario@suitepad.de&quot;
+      }
+    }
+  ]
+}</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="required">
+                    <span class="name">repository</span>
+                </td>
+                <td>
+                  <span class="description">Repository, as a Hash, for example: {
+  &quot;id&quot;: 135493233,
+  &quot;name&quot;: &quot;suitepad_api&quot;
+}</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <h3>Request</h3>
+
+            <h4>Headers</h4>
+            <pre class="request headers">Host: example.org
+Content-Type: application/x-www-form-urlencoded
+Cookie: </pre>
+
+          <h4>Route</h4>
+          <pre class="request route highlight">POST /git_updates</pre>
+
+
+            <h4>Body</h4>
+            <pre class="request body">action=released&released_at=2018-05-30T20%3A18%3A44Z&release[id]=11248810&release[tag_name]=1.0.1&release[author][id]=21031067&release[author][name]=paul&release[author][email]=paul%40suitepad.de&release[commits][][sha]=78c4ef902de35c95a6b403c3f5c2e536cfbaab2e&release[commits][][message]=CHORE%3A+Cleaner+logging+output%0A%0ARef%3A+%23happ-1224&release[commits][][date]=2018-05-24T16%3A00%3A49Z&release[commits][][author][id]=21031067&release[commits][][author][name]=paul&release[commits][][author][email]=paul%40suitepad.de&release[commits][][sha]=37a8312ef07a9e729099a1eb8471dc37efa5ff56&release[commits][][message]=FIX%3A+don%27t+attempt+invalid+email+notifications%0A%0ARef%3A+%23cro-12&release[commits][][date]=2018-05-21T09%3A50%3A49Z&release[commits][][author][id]=21001067&release[commits][][author][name]=mario&release[commits][][author][email]=mario%40suitepad.de&repository[id]=135493233&repository[name]=suitepad_api</pre>
+
+
+            <h3>Response</h3>
+              <h4>Headers</h4>
+              <pre class="response headers">X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+X-Download-Options: noopen
+X-Permitted-Cross-Domain-Policies: none
+Referrer-Policy: strict-origin-when-cross-origin
+Content-Type: application/json; charset=utf-8
+ETag: W/&quot;bacabdfce83415140deee59fc011d30e&quot;
+Cache-Control: max-age=0, private, must-revalidate
+X-Request-Id: e0093341-9666-4d99-ad49-0caf83d08348
+X-Runtime: 0.072339
+Content-Length: 882</pre>
+            <h4>Status</h4>
+            <pre class="response status">200 OK</pre>
+              <h4>Body</h4>
+              <pre class="response body">{
+  &quot;id&quot;: 7,
+  &quot;user_id&quot;: 7,
+  &quot;repository_id&quot;: 5,
+  &quot;event&quot;: &quot;release&quot;,
+  &quot;external_source&quot;: &quot;Future Feature&quot;,
+  &quot;payload&quot;: {
+    &quot;action&quot;: &quot;create&quot;,
+    &quot;released_at&quot;: &quot;2018-05-30T20:18:44Z&quot;,
+    &quot;release&quot;: {
+      &quot;id&quot;: &quot;11248810&quot;,
+      &quot;tag_name&quot;: &quot;1.0.1&quot;,
+      &quot;author&quot;: {
+        &quot;id&quot;: &quot;21031067&quot;,
+        &quot;name&quot;: &quot;paul&quot;,
+        &quot;email&quot;: &quot;paul@suitepad.de&quot;
+      },
+      &quot;commits&quot;: [
+        {
+          &quot;sha&quot;: &quot;78c4ef902de35c95a6b403c3f5c2e536cfbaab2e&quot;,
+          &quot;message&quot;: &quot;CHORE: Cleaner logging output\n\nRef: #happ-1224&quot;,
+          &quot;date&quot;: &quot;2018-05-24T16:00:49Z&quot;,
+          &quot;author&quot;: {
+            &quot;id&quot;: &quot;21031067&quot;,
+            &quot;name&quot;: &quot;paul&quot;,
+            &quot;email&quot;: &quot;paul@suitepad.de&quot;
+          }
+        },
+        {
+          &quot;sha&quot;: &quot;37a8312ef07a9e729099a1eb8471dc37efa5ff56&quot;,
+          &quot;message&quot;: &quot;FIX: don&#39;t attempt invalid email notifications\n\nRef: #cro-12&quot;,
+          &quot;date&quot;: &quot;2018-05-21T09:50:49Z&quot;,
+          &quot;author&quot;: {
+            &quot;id&quot;: &quot;21001067&quot;,
+            &quot;name&quot;: &quot;mario&quot;,
+            &quot;email&quot;: &quot;mario@suitepad.de&quot;
+          }
+        }
+      ]
+    },
+    &quot;repository&quot;: {
+      &quot;id&quot;: &quot;135493233&quot;,
+      &quot;name&quot;: &quot;suitepad_api&quot;
+    },
+    &quot;controller&quot;: &quot;git_updates&quot;
+  },
+  &quot;created_at&quot;: &quot;2020-05-20T20:38:51.955Z&quot;,
+  &quot;updated_at&quot;: &quot;2020-05-20T20:38:51.955Z&quot;
+}</pre>
+      </div>
+    </div>
+  </body>
+</html>

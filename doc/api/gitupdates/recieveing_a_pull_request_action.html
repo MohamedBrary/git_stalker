@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GitUpdates API</title>
+    <meta charset="utf-8">
+    <style>
+
+body {
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+  color: #404040;
+}
+
+.description {
+  white-space: pre;
+}
+
+.container {
+  width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  zoom: 1;
+}
+
+pre {
+  background-color: #f5f5f5;
+  display: block;
+  padding: 8.5px;
+  margin: 0 0 18px;
+  line-height: 18px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+td.required .name:after {
+  float: right;
+  content: "required";
+  font-weight: normal;
+  color: #F08080;
+}
+
+a{
+  color: #0069d6;
+  text-decoration: none;
+  line-height: inherit;
+  font-weight: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  color: #404040;
+}
+
+h1 {
+  margin-bottom: 18px;
+  font-size: 30px;
+  line-height: 36px;
+}
+h2 {
+  font-size: 24px;
+  line-height: 36px;
+}
+h3{
+  font-size: 18px;
+  line-height: 36px;
+}
+h4 {
+  font-size: 16px;
+  line-height: 36px;
+}
+
+table{
+  width: 100%;
+  margin-bottom: 18px;
+  padding: 0;
+  border-collapse: separate;
+  font-size: 13px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+}
+
+table th {
+  padding-top: 9px;
+  font-weight: bold;
+  vertical-align: middle;
+  border-bottom: 1px solid #ddd;
+}
+table th+th, table td+td {
+  border-left: 1px solid #ddd;
+}
+table th, table td {
+  padding: 10px 10px 9px;
+  line-height: 18px;
+  text-align: left;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>GitUpdates API</h1>
+
+        <p class="explanation">GitUpdate resource</p>
+
+      <div class="article">
+        <h2>Recieveing a pull request action</h2>
+        <h3>POST /git_updates</h3>
+
+          <h3>Parameters</h3>
+          <table class="parameters table table-striped table-bordered table-condensed">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="required">
+                    <span class="name">action</span>
+                </td>
+                <td>
+                  <span class="description">Action, as a String, for example: &quot;closed&quot;</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="required">
+                    <span class="name">number</span>
+                </td>
+                <td>
+                  <span class="description">Number, as a Integer, for example: 142</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="required">
+                    <span class="name">pull_request</span>
+                </td>
+                <td>
+                  <span class="description">Pull Request, as a Hash, for example: {
+  &quot;id&quot;: 191568743,
+  &quot;number&quot;: 1,
+  &quot;state&quot;: &quot;closed&quot;,
+  &quot;title&quot;: &quot;Update the README with deploy information&quot;,
+  &quot;user&quot;: {
+    &quot;id&quot;: 11010367,
+    &quot;name&quot;: &quot;tarek&quot;,
+    &quot;email&quot;: &quot;tarek@suitepad.de&quot;
+  },
+  &quot;body&quot;: &quot;This is a pretty simple change that we need to pull into master.&quot;,
+  &quot;created_at&quot;: &quot;2018-05-30T20:18:30Z&quot;,
+  &quot;updated_at&quot;: &quot;2018-05-30T20:18:50Z&quot;,
+  &quot;closed_at&quot;: &quot;2018-05-30T20:18:50Z&quot;,
+  &quot;merge_commit_sha&quot;: &quot;414cb0069601a32b00bd122a2380cd283626a8e5&quot;,
+  &quot;head&quot;: {
+    &quot;sha&quot;: &quot;34c5c7793cb3b279e22454cb6750c80560547b3a&quot;
+  },
+  &quot;commits&quot;: [
+    {
+      &quot;sha&quot;: &quot;f66997d4630d353901a64f39df5f92d22e4bc634&quot;,
+      &quot;message&quot;: &quot;FEAT: Support Android 8.1 devices \n\nRef: #sp-131&quot;,
+      &quot;date&quot;: &quot;2018-05-14T16:00:49Z&quot;,
+      &quot;author&quot;: {
+        &quot;id&quot;: 21431007,
+        &quot;name&quot;: &quot;ahmed&quot;,
+        &quot;email&quot;: &quot;ahmed@suitepad.de&quot;
+      }
+    },
+    {
+      &quot;sha&quot;: &quot;fbea31d5a04cd9e238fd45f3f27f314ebf707479&quot;,
+      &quot;message&quot;: &quot;FIX: hide url not being passed to PDF URL\n\nRef: #sp-124&quot;,
+      &quot;date&quot;: &quot;2018-05-27T16:00:49Z&quot;,
+      &quot;author&quot;: {
+        &quot;id&quot;: 21431007,
+        &quot;name&quot;: &quot;ahmed&quot;,
+        &quot;email&quot;: &quot;ahmed@suitepad.de&quot;
+      }
+    }
+  ]
+}</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="required">
+                    <span class="name">repository</span>
+                </td>
+                <td>
+                  <span class="description">Repository, as a Hash, for example: {
+  &quot;id&quot;: 135493233,
+  &quot;name&quot;: &quot;suitepad_api&quot;
+}</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <h3>Request</h3>
+
+            <h4>Headers</h4>
+            <pre class="request headers">Host: example.org
+Content-Type: application/x-www-form-urlencoded
+Cookie: </pre>
+
+          <h4>Route</h4>
+          <pre class="request route highlight">POST /git_updates</pre>
+
+
+            <h4>Body</h4>
+            <pre class="request body">action=closed&number=142&pull_request[id]=191568743&pull_request[number]=1&pull_request[state]=closed&pull_request[title]=Update+the+README+with+deploy+information&pull_request[user][id]=11010367&pull_request[user][name]=tarek&pull_request[user][email]=tarek%40suitepad.de&pull_request[body]=This+is+a+pretty+simple+change+that+we+need+to+pull+into+master.&pull_request[created_at]=2018-05-30T20%3A18%3A30Z&pull_request[updated_at]=2018-05-30T20%3A18%3A50Z&pull_request[closed_at]=2018-05-30T20%3A18%3A50Z&pull_request[merge_commit_sha]=414cb0069601a32b00bd122a2380cd283626a8e5&pull_request[head][sha]=34c5c7793cb3b279e22454cb6750c80560547b3a&pull_request[commits][][sha]=f66997d4630d353901a64f39df5f92d22e4bc634&pull_request[commits][][message]=FEAT%3A+Support+Android+8.1+devices+%0A%0ARef%3A+%23sp-131&pull_request[commits][][date]=2018-05-14T16%3A00%3A49Z&pull_request[commits][][author][id]=21431007&pull_request[commits][][author][name]=ahmed&pull_request[commits][][author][email]=ahmed%40suitepad.de&pull_request[commits][][sha]=fbea31d5a04cd9e238fd45f3f27f314ebf707479&pull_request[commits][][message]=FIX%3A+hide+url+not+being+passed+to+PDF+URL%0A%0ARef%3A+%23sp-124&pull_request[commits][][date]=2018-05-27T16%3A00%3A49Z&pull_request[commits][][author][id]=21431007&pull_request[commits][][author][name]=ahmed&pull_request[commits][][author][email]=ahmed%40suitepad.de&repository[id]=135493233&repository[name]=suitepad_api</pre>
+
+
+            <h3>Response</h3>
+              <h4>Headers</h4>
+              <pre class="response headers">X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+X-Download-Options: noopen
+X-Permitted-Cross-Domain-Policies: none
+Referrer-Policy: strict-origin-when-cross-origin
+Content-Type: application/json; charset=utf-8
+ETag: W/&quot;a77cc23c17c0f026d7e9ddfb7ca9f005&quot;
+Cache-Control: max-age=0, private, must-revalidate
+X-Request-Id: f987a46e-b01d-481d-9e22-3aca84feabda
+X-Runtime: 0.136215
+Content-Length: 1241</pre>
+            <h4>Status</h4>
+            <pre class="response status">200 OK</pre>
+              <h4>Body</h4>
+              <pre class="response body">{
+  &quot;id&quot;: 1,
+  &quot;user_id&quot;: 1,
+  &quot;repository_id&quot;: 1,
+  &quot;event&quot;: &quot;pull_request_action&quot;,
+  &quot;external_source&quot;: &quot;Future Feature&quot;,
+  &quot;payload&quot;: {
+    &quot;action&quot;: &quot;create&quot;,
+    &quot;number&quot;: &quot;142&quot;,
+    &quot;pull_request&quot;: {
+      &quot;id&quot;: &quot;191568743&quot;,
+      &quot;number&quot;: &quot;1&quot;,
+      &quot;state&quot;: &quot;closed&quot;,
+      &quot;title&quot;: &quot;Update the README with deploy information&quot;,
+      &quot;user&quot;: {
+        &quot;id&quot;: &quot;11010367&quot;,
+        &quot;name&quot;: &quot;tarek&quot;,
+        &quot;email&quot;: &quot;tarek@suitepad.de&quot;
+      },
+      &quot;body&quot;: &quot;This is a pretty simple change that we need to pull into master.&quot;,
+      &quot;created_at&quot;: &quot;2018-05-30T20:18:30Z&quot;,
+      &quot;updated_at&quot;: &quot;2018-05-30T20:18:50Z&quot;,
+      &quot;closed_at&quot;: &quot;2018-05-30T20:18:50Z&quot;,
+      &quot;merge_commit_sha&quot;: &quot;414cb0069601a32b00bd122a2380cd283626a8e5&quot;,
+      &quot;head&quot;: {
+        &quot;sha&quot;: &quot;34c5c7793cb3b279e22454cb6750c80560547b3a&quot;
+      },
+      &quot;commits&quot;: [
+        {
+          &quot;sha&quot;: &quot;f66997d4630d353901a64f39df5f92d22e4bc634&quot;,
+          &quot;message&quot;: &quot;FEAT: Support Android 8.1 devices \n\nRef: #sp-131&quot;,
+          &quot;date&quot;: &quot;2018-05-14T16:00:49Z&quot;,
+          &quot;author&quot;: {
+            &quot;id&quot;: &quot;21431007&quot;,
+            &quot;name&quot;: &quot;ahmed&quot;,
+            &quot;email&quot;: &quot;ahmed@suitepad.de&quot;
+          }
+        },
+        {
+          &quot;sha&quot;: &quot;fbea31d5a04cd9e238fd45f3f27f314ebf707479&quot;,
+          &quot;message&quot;: &quot;FIX: hide url not being passed to PDF URL\n\nRef: #sp-124&quot;,
+          &quot;date&quot;: &quot;2018-05-27T16:00:49Z&quot;,
+          &quot;author&quot;: {
+            &quot;id&quot;: &quot;21431007&quot;,
+            &quot;name&quot;: &quot;ahmed&quot;,
+            &quot;email&quot;: &quot;ahmed@suitepad.de&quot;
+          }
+        }
+      ]
+    },
+    &quot;repository&quot;: {
+      &quot;id&quot;: &quot;135493233&quot;,
+      &quot;name&quot;: &quot;suitepad_api&quot;
+    },
+    &quot;controller&quot;: &quot;git_updates&quot;
+  },
+  &quot;created_at&quot;: &quot;2020-05-20T20:38:51.701Z&quot;,
+  &quot;updated_at&quot;: &quot;2020-05-20T20:38:51.701Z&quot;
+}</pre>
+      </div>
+    </div>
+  </body>
+</html>

@@ -12,9 +12,9 @@ class PullRequest < ApplicationRecord
   # Relations
 
   belongs_to :repository
-  belongs_to :creator, class_name: 'User'
-  belongs_to :approver, class_name: 'User'
-  belongs_to :closer, class_name: 'User'
+  belongs_to :creator, class_name: 'User', optional: true
+  belongs_to :approver, class_name: 'User', optional: true
+  belongs_to :closer, class_name: 'User', optional: true
 
   def commits
     Commit.where("'#{id}' = ANY (pull_request_ids)")
@@ -33,6 +33,16 @@ class PullRequest < ApplicationRecord
 
   validates :state, inclusion: { in: STATES }
   # TODO rest of validations
+
+  # ----
+  # Core
+
+  # based on pull request commits
+  def update_ticket_ids
+    self.ticket_ids = commits.pluck(:ticket_ids).flatten.uniq
+    save
+  end
+
 
   # -------
   # Helpers

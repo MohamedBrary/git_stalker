@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 2020_05_18_140846) do
   create_table "commits", force: :cascade do |t|
     t.bigint "git_update_id", null: false
     t.bigint "repository_id", null: false
-    t.bigint "release_id", null: false
-    t.bigint "committer_id", null: false
-    t.bigint "pusher_id", null: false
+    t.bigint "release_id"
+    t.bigint "committer_id"
+    t.bigint "pusher_id"
     t.datetime "pushed_at"
     t.string "pull_request_ids", array: true
     t.string "ticket_ids", array: true
@@ -50,11 +50,11 @@ ActiveRecord::Schema.define(version: 2020_05_18_140846) do
   end
 
   create_table "pull_requests", force: :cascade do |t|
-    t.string "git_update_ids"
+    t.string "git_update_ids", array: true
     t.bigint "repository_id", null: false
-    t.bigint "creator_id", null: false
-    t.bigint "approver_id", null: false
-    t.bigint "closer_id", null: false
+    t.bigint "creator_id"
+    t.bigint "approver_id"
+    t.bigint "closer_id"
     t.string "external_id"
     t.string "ticket_ids", array: true
     t.string "state"

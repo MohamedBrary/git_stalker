@@ -17,7 +17,6 @@ class ProcessPayload::PullRequest < Mutations::Command
   def execute
     {
       external_id: number,
-      external_source: 'Future Feature',
       state: state,
       processed_user: processed_user
     }
