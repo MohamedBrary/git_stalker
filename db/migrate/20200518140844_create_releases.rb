@@ -5,6 +5,7 @@ class CreateReleases < ActiveRecord::Migration[6.0]
       t.references :repository, null: false, foreign_key: true
       t.references :releaser, null: false, foreign_key: {to_table: :users}
       t.string :ticket_ids, array: true
+      t.string :external_id
       t.timestamp :released_at
       t.string :tag_name
       t.string :state

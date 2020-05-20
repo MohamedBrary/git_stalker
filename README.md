@@ -43,7 +43,7 @@ $ git push -u origin master
 rails g model User name email external_id external_source
 rails g model Repository name external_id external_source
 rails g model GitUpdate user:references repository:references event external_source payload:json
-rails g model Release git_update:references repository:references releaser:references ticket_ids released_at:timestamp tag_name state # state would be updated through PullRequest updates
+rails g model Release git_update:references repository:references releaser:references ticket_ids external_id released_at:timestamp tag_name state # state would be updated through PullRequest updates
 rails g model Commit git_update:references repository:references release:references committer:references pusher:references pushed_at:timestamp pull_request_ids ticket_ids sha message state
 rails g model PullRequest git_update_ids repository:references creator:references approver:references closer:references external_id ticket_ids state
 # rails g model Ticket code title project_id # now it is just a code in other models

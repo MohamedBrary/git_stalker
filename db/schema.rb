@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2020_05_18_140846) do
     t.bigint "repository_id", null: false
     t.bigint "releaser_id", null: false
     t.string "ticket_ids", array: true
+    t.string "external_id"
     t.datetime "released_at"
     t.string "tag_name"
     t.string "state"

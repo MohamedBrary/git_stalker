@@ -54,3 +54,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # API documentation gem
 gem 'raddocs'
+
+# Better validation errors for APIs
+# requires Rails 4 :/
+# gem 'rails_api_validation_errors'
+
+# Handling command/service pattern
+gem 'mutations'

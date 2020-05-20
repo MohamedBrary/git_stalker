@@ -99,6 +99,8 @@ GEM
     mustache (1.1.1)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
+    mutations (0.9.1)
+      activesupport
     nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
@@ -216,6 +218,7 @@ DEPENDENCIES
   colorize
   dotenv-rails
   listen (~> 3.2)
+  mutations
   pg (>= 0.18, < 2.0)
   pry
   pry-byebug

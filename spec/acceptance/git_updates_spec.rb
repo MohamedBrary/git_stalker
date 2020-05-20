@@ -3,7 +3,7 @@ require 'rails_helper'
   resource 'GitUpdates' do
     explanation 'GitUpdate resource'
 
-    header 'Content-Type', 'application/json'
+    # header 'Content-Type', 'application/json'
 
     post '/git_updates' do
 
@@ -13,7 +13,7 @@ require 'rails_helper'
         payloads.each do |payload|
           payload_json = JSON.parse(File.open(File.join(path, "#{payload}.json")).read)
           expected_records = payload_json.delete('expected_records')
-          example_request "Recieveing a #{payload.titleize.downcase}" do
+          example "Recieveing a #{payload.titleize.downcase}" do
             # TODO hopefully this gem is smart enough to extract the parameters and add it to docs
             # because I am not writing all that now :'D
             do_request(payload_json)
