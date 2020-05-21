@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>API Documentation</title>
-  <meta charset="utf-8">
-  <style>
-    
+
 /*custom*/
 table.parameters tr td {
   border-bottom: 1pt solid #efe9e9;
@@ -50,7 +44,7 @@ pre {
 
 td.required .name:after {
   float: right;
-  content: &quot;required&quot;;
+  content: "required";
   font-weight: normal;
   color: #F08080;
 }
@@ -112,30 +106,3 @@ table th, table td {
   line-height: 18px;
   text-align: left;
 }
-
-  </style>
-</head>
-<body>
-<div class="container">
-  <h1>API Documentation</h1>
-  
-  <div class="article">
-    <h2>GitUpdates</h2>
-
-      <p class="explanation">GitUpdate resource</p>
-
-    <ul>
-      <li>
-        <a href="gitupdates/recieveing_a_pull_request_action.html">Recieveing a pull request action</a>
-      </li>
-      <li>
-        <a href="gitupdates/recieveing_a_push_payload.html">Recieveing a push payload</a>
-      </li>
-      <li>
-        <a href="gitupdates/recieveing_a_release_payload.html">Recieveing a release payload</a>
-      </li>
-    </ul>
-  </div>
-</div>
-</body>
-</html>

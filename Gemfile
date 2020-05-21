@@ -48,6 +48,9 @@ group :development do
 
   # Coloring the console output
   gem 'colorize'
+
+  # Generating ERD
+  gem 'rails-erd'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

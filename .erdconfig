@@ -1,0 +1,8 @@
+exclude:
+  - ActiveRecord::InternalMetadata
+  - ActiveRecord::SchemaMigration
+  - primary::SchemaMigration
+attributes:
+  - foreign_key
+  - content
+title: GitStalker ERD
